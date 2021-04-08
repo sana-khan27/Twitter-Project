@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -13,86 +14,74 @@
   <div class="container">
   <div class="main">
     <div class="main-header">
-    <img class="logo" src="static/images/favicon.png">
+    <img class="logo" src="{% static 'images/favicon.png' %}">
     <h1>Home</h1>
   </div>
 <div class="tweet-post">
    <div class="my-icon">
-   <img src="static/images/earth.jpg">
+   <img src="{% static 'images/earth.jpg' %}">
    </div>
    <div class="input-area">
-   <form> <!--For adding tweets change this form -->
-    <input type="text" placeholder="Your name" max-length="14" required>
-     <textarea name="body" placeholder="What's happening?" max-length="140" required></textarea>
-     <div class="bottom-area">
-     <div class="mb-0">
-     <input class="form-control" type="file" placeholder="Chosen File">
-     </div>
-     <button class="btn" type="submit">Tweet</button>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-     </div>
+   <form action="/add/" method="POST" enctype="multipart/form-data">
+   {% csrf_token %}
+   <input type="text" name="name" placeholder="Your name" maxlength="14" required>
+   <textarea name="body" placeholder="What's happening?" maxlength="140" required></textarea>
+    <div class="bottom-area">
+        <div class="mb-0">
+            <input class="form-control form-control-sm" name="image" type="file">
+        </div>
+
+        <button class="btn" type="submit">Tweet</button>
+    </div>
+  
+    
    </form>
    </div>
    </div>
 <div class="ditch"></div>
+{% for tweet in tweets %}
 <div class="tweet-list">
   <div class="tweet">
   <div class="user">
   <a href="#">
-  <img src="static/images/earth.jpg">
+  <img src="{%static 'images/earth.jpg' %}">
   </a>
   </div>
   <div class="content">
    <div class="name">
      <a href="#" class>
-     <span class="nickname">Sana Mobin</span>
-     <span class="datetime">1 day ago</span>
+     <span class="nickname">{{ tweet.name }}</span>
+     <span class="datetime">{{ tweet.created_at }}</span>
   </a>
-  <img src="/static/images/icon-small-menu.svg" class="small-menu js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="<a href='/tweetEditView/24/'>Edit</a><br><a href='/tweetDelete/24/'>Delete</a>" data-bs-html="true" data-bs-original-title="" title="">
+  <img src="{% static 'images/icon-small-menu.svg' %}" class="small-menu js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="<a href='/edit/{{tweet.id}}/'>Edit</a><br><a href='/tweetDelete/24/'>Delete</a>" data-bs-html="true">
 </div>
-<p>This is my first TWEET.</p>
-<div class="icon-list">
-<div class="like js-like" data-tweet-id="24">
-<img src="/static/images/icon-heart-twitterblue.svg">
-</div>
-<div class="like-count js-like-count"> 3 </div>
-   </div>
-  </div>
-  </div>
- </div>
-
-<div class="tweet-list">
-  <div class="tweet">
-  <div class="user">
-  <a href="#">
-  <img src="static/images/earth.jpg">
-  </a>
-  </div>
-  <div class="content">
-   <div class="name">
-     <a href="#" class>
-     <span class="nickname">Sana Mobin</span>
-     <span class="datetime">3 days to go</span>
-  </a>
-  <img src="/static/images/icon-small-menu.svg" class="small-menu js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="<a href='/tweetEditView/24/'>Edit</a><br><a href='/tweetDelete/24/'>Delete</a>" data-bs-html="true" data-bs-original-title="" title="">
-</div>
-<p>'Sunrise' the miracle of the day.</p>
+<p>{{ tweet.body }}</p>
 <a href="#">
-<img class="post-image" src="static/images/sunrise pic.jpg">
+<img class="post-image" src="{{ tweet.image.url }}">
  </a>
 <div class="icon-list">
 <div class="like js-like" data-tweet-id="24">
-<img src="/static/images/icon-heart-twitterblue.svg">
+<img src="{% static 'images/icon-heart-twitterblue.svg' %}">
 </div>
 <div class="like-count js-like-count"> 20 </div>
    </div>
   </div>
   </div>
  </div>
+ {% endfor %}
 </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script>
+ $(function() {
+ $('.js-popover').popover({
+  container: 'body'
+})
+ })
+ </script>
+
 </body>
 </html>
-
-
