@@ -14,6 +14,7 @@ from pathlib import Path
 import cloudinary 
 import cloudinary.uploader
 import cloudinary.api 
+import django_heroku 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,3 +130,4 @@ cloudinary.config(
   api_key = "587191261997626", 
   api_secret = "pY_0tcgFiT3faH7Y32eGtNAO0Xk" 
 )
+django_heroku.settings(locals())

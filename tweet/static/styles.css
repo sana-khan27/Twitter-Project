@@ -306,3 +306,9 @@ body {
     color: #212529;
     background-color: #fff;
 }
+.home .tweet-post .edit-image {
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(197, 199, 201);
+}

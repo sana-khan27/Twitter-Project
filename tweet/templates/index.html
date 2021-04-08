@@ -53,7 +53,7 @@
      <span class="nickname">{{ tweet.name }}</span>
      <span class="datetime">{{ tweet.created_at }}</span>
   </a>
-  <img src="{% static 'images/icon-small-menu.svg' %}" class="small-menu js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="<a href='/edit/{{tweet.id}}/'>Edit</a><br><a href='/tweetDelete/24/'>Delete</a>" data-bs-html="true">
+  <img src="{% static 'images/icon-small-menu.svg' %}" class="small-menu js-popover" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="<a href='/edit/{{tweet.id}}/'>Edit</a><br><a href='/delete/{{tweet.id}}/'>Delete</a>" data-bs-html="true">
 </div>
 <p>{{ tweet.body }}</p>
 <a href="#">

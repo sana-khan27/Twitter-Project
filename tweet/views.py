@@ -33,3 +33,8 @@ def edit(request,tweet_id):
     form = tweetForm(instance = tweet)
     return render(request, 'edit.html',{'tweet':tweet,'form':form})
 
+def delete(request,tweet_id):
+    tweet = TweetDB.objects.get(id=tweet_id)
+    tweet.delete()
+    return HttpResponseRedirect('/')
+
