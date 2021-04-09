@@ -131,7 +131,7 @@ Home
     background: rgb(9,228,254);
 	color: crimson;
     border-radius: 5px;
-    margin: 10px;
+    margin: -3px;
     padding: 10px;
 	float: right;
 }
@@ -279,7 +279,7 @@ Home
 padding: 5px 10px 10px 5px;
 }
 .bottom-area .btn {
- margin-top: 10px;
+ margin-top: 1px;
  float: right;
 
 }
