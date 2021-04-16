@@ -16,10 +16,10 @@ This is a small project using HTML , CSS , Boostrap , Javascript , Django and Cl
 
 ## INSTALLATION
 
-install django
-install gunicorn
-install django-heroku
-install cloudinary
+* install django
+* install gunicorn
+* install django-heroku
+* install cloudinary
 
 ## HOW TO USE?
 
