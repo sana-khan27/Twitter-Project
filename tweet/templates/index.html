@@ -61,12 +61,13 @@
 <img class="post-image" src="{{ tweet.image.url }}">
 {% endif %}
  </a>
-<div class="icon-list">
-<div class="like js-like" data-tweet-id="24">
-<img src="{% static 'images/icon-heart-twitterblue.svg' %}">
-</div>
-<div class="like-count js-like-count"> 20 </div>
-   </div>
+<div class="icon_list">
+         <form id="likes-form" action="/like/{{tweet.id}}/" method='POST'>
+          {% csrf_token %}
+          <button class="like-button" type="submit", name="post_id", value="{{ post.id }}">&#10084;</button>
+          {{tweet.likes}}
+         </form>
+      </div>
   </div>
   </div>
  </div>
