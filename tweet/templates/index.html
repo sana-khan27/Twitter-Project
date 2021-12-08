@@ -57,7 +57,9 @@
 </div>
 <p>{{ tweet.body }}</p>
 <a href="#">
+{% if tweet.image %}
 <img class="post-image" src="{{ tweet.image.url }}">
+{% endif %}
  </a>
 <div class="icon-list">
 <div class="like js-like" data-tweet-id="24">
